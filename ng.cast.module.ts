@@ -5,7 +5,8 @@ import { NgCastService } from './shared/ng-cast.service';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+      MaterialIconModule,
   ],
   exports: [NgCastComponent],
   providers: [NgCastService],
