@@ -1,2 +1,2 @@
-<i *ngIf="!castingStatus.casting" class="material-icons" (click)="openSession()">cast</i>
-<i *ngIf="castingStatus.casting" class="material-icons" (click)="openSession()">cast_connected</i>
+<mat-icon *ngIf="!castingStatus.casting" (click)="openSession()">cast</mat-icon>
+<mat-icon *ngIf="castingStatus.casting" (click)="openSession()">cast_connected</mat-icon>
