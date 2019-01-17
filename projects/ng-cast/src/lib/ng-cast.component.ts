@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NgCastService } from './shared/ng-cast.service';
 
@@ -16,6 +18,8 @@ interface CastingStatus {
 export class NgCastComponent implements OnInit {
   castingStatus: CastingStatus;
 
+  @Output() connected = new EventEmitter<null>();
+
   constructor(
     private ngCastService: NgCastService
   ) {
@@ -23,12 +27,12 @@ export class NgCastComponent implements OnInit {
 
   ngOnInit() {
 
-    let script = window['document'].createElement('script');
+    const script = window['document'].createElement('script');
     script.setAttribute('type', 'text/javascript');
     script.setAttribute('src', 'https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1');
     window['document'].body.appendChild(script);
 
-    let ngCastService = this.ngCastService;
+    const ngCastService = this.ngCastService;
     window['__onGCastApiAvailable'] = function (isAvailable) {
       if (isAvailable) {
         ngCastService.initializeCastApi();
@@ -39,7 +43,13 @@ export class NgCastComponent implements OnInit {
   }
 
   openSession() {
-    this.ngCastService.discoverDevices();
+    const discovery: Observable<string> = this.ngCastService.discoverDevices();
+    discovery.subscribe(status => {
+      console.log('Disc');
+      if (status === 'CONNECTED') {
+        this.connected.emit(null);
+      }
+    });
   }
 
   closeSession() {

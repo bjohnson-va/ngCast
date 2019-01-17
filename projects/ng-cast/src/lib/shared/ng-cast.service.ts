@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Subject } from 'rxjs';
+import { Observable, ReplaySubject, Subject } from 'rxjs';
 
 @Injectable()
 export class NgCastService {
@@ -30,9 +30,9 @@ export class NgCastService {
     console.log('GCast initialization failed', err);
   };
 
-  discoverDevices = function () {
-    let self = this;
-    let subj = new Subject();
+  discoverDevices = function (): Observable<string> {
+    const self = this;
+    const subj = new ReplaySubject<string>(1);
     this.cast.requestSession(function (s) {
       self.session = s;
       self.setCasting(true);
@@ -46,7 +46,7 @@ export class NgCastService {
         console.error('Error selecting a cast device', err);
       }
     });
-    return subj;
+    return subj.asObservable();
   };
 
   launchMedia = function (media) {

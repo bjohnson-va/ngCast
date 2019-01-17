@@ -1,6 +1,9 @@
 # ngCast
 Broadcast media on your TV from your Angular app
 
+## Contributing to this project
+See [DEVELOPMENT](DEVELOPMENT.md)
+
 ## Installation
 ```node
 sudo npm install ng-cast
@@ -26,7 +29,7 @@ In one of your template, insert a button to select your Chromecast and connect o
 <ng-cast></ng-cast>
 ```
 
-In one of your app components, 
+In one of your app components,
 ```javascript
 import { NgCastService } from 'ng-cast';
 ...
@@ -38,7 +41,7 @@ constructor(
 
 You are now able to broadcast any image or video to your TV
 ```javascript
-this.ngCastService.launchMedia(mediaUrl); 
+this.ngCastService.launchMedia(mediaUrl);
 // ex. this.ngCastService.launchMedia('http://25.media.tumblr.com/tumblr_m4c8cxLOQv1rwa0vgo1_250.gif')
 ```
 
