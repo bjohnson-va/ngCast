@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { NgCastService } from './shared/ng-cast.service';
 
+interface CastingStatus {
+  casting: any;
+}
+
 @Component({
   selector: 'ng-cast',
   templateUrl: './ng-cast.component.html',
@@ -10,10 +14,12 @@ import { NgCastService } from './shared/ng-cast.service';
   ]
 })
 export class NgCastComponent implements OnInit {
-  castingStatus: Object;
+  castingStatus: CastingStatus;
+
   constructor(
     private ngCastService: NgCastService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
 

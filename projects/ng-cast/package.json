@@ -1,19 +1,39 @@
 {
-  "name": "ng-cast-workspace",
-  "version": "0.0.0",
+  "name": "@bjohnson-va/ng-cast",
+  "version": "0.2.8",
+  "description": "Forked Project: Broadcast media on your TV from your Angular app",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "build_lib": "ng build ng-cast",
-    "npm_pack": "cd dist/ng-cast && npm pack",
-    "package": "npm run build_lib && npm run npm_pack"
+    "e2e": "ng e2e"
   },
-  "private": true,
-  "dependencies": {
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dahfazz/ngCast.git"
+  },
+  "keywords": [
+    "chromecast",
+    "chrome",
+    "google",
+    "cast",
+    "api",
+    "angular"
+  ],
+  "author": "Fabien Zibi",
+  "contributors": [
+    "Brad Johnson"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dahfazz/ngCast/issues"
+  },
+  "homepage": "https://github.com/dahfazz/ngCast#readme",
+  "peerDependencies": {
     "@angular/animations": "~7.2.0",
     "@angular/cdk": "~7.2.0",
     "@angular/material": "~7.2.0",
@@ -30,8 +50,6 @@
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.12.0",
-    "@angular-devkit/build-ng-packagr": "~0.12.0",
     "@angular/cli": "~7.2.1",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
@@ -47,11 +65,9 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "ng-packagr": "^4.2.0",
+    "npm-install-peers": "^1.2.1",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
-    "tsickle": ">=0.34.0",
-    "tslib": "^1.9.0",
     "tslint": "~5.11.0",
     "typescript": "~3.2.2"
   }
